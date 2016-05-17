@@ -9,6 +9,8 @@
 	else
 	{
 		session_start();
+		$_SESSION['username'] = "";
+		$_SESSION['userPassword'] = "";
 		session_destroy();
 		header("Location: index.html");
 	}
