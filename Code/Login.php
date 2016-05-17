@@ -4,18 +4,18 @@
 	$con = mysqli_connect($host, $username, $password, $databaseName);
 	if (mysqli_connect_errno())
 	{
-		echo "false";
+		echo "DB";
 	}
 	else
 	{
 		$userID = mysqli_real_escape_string($con, $_GET['username']);
 		$userPassword = mysqli_real_escape_string($con, $_GET['password']);
-		$sql = "SELECT COUNT(*) AS count FROM userInformation WHERE userID = '" . $userID;
+		$sql = "SELECT COUNT(*) AS count FROM userInformation WHERE userID = '" . $userID. "'";
 		$result = mysqli_query($con, $sql);
 		$out = $result->fetch_array(MYSQLI_ASSOC);
 		if($out['count'] == "1")
 		{
-			$sql = "SELECT password FROM userPassword WHERE userID = '" . $userID;
+			$sql = "SELECT password FROM userPassword WHERE userID = '" . $userID. "'";
 			$result = mysqli_query($con, $sql);
 			$out = $result->fetch_array(MYSQLI_ASSOC);
 			if($out['password'] == $userPassword){
@@ -26,12 +26,12 @@
 			}
 			else
 			{
-				echo "false";
+				echo "fail";
 			}	
 		}
 		else
 		{
-			echo "false";
+			echo "fail";
 		}
 	}
 	mysqli_close($con);

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Eat2Fat</title>
-		<link rel="stylesheet" type="text/css" href="CSS.css">
+		<title>Login</title>
 		<meta charset="utf-8">
 	</head>
 	<body class="bodymain">
@@ -28,7 +27,7 @@
 			<table>
 				<tr>
 					<td>
-						<input class="buttonBrown" type="button" value="Register" onclick="window.location.href='Register.html'">
+						<input class="buttonBrown" type="button" value="Register" onclick="window.location.href='index.html'">
 					</td>
 					<td>
 						<input class="buttonBrown" type="button" value="Login" onclick="login()">
@@ -47,21 +46,17 @@
 				xmlhttp.onreadystatechange=function() {
 					if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
 					{
-						if(xmlhttp.responseText == "Admin")
-						{
-							window.location.href='Admin_UserManager.html';
-						}
-						else if(xmlhttp.responseText == "GCM")
-						{
-							window.location.href='GCM_Method.html';
-						}
-						else if(xmlhttp.responseText == "Player")
+						if(xmlhttp.responseText == "PASS")
 						{
 							window.location.href='Home.html';
 						}
+						else if(xmlhttp.responseText == "DB")
+						{
+							alert("Server Down");
+						}
 						else
 						{
-							alert("Failed");
+							alert("Incorrect usernae or password ");
 						}
 					}
 				}

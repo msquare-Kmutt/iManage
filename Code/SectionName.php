@@ -15,7 +15,7 @@
 		$out = $result->fetch_array(MYSQLI_ASSOC);
 		if($out['count'] == "1")
 		{
-			$rs = '"[{"userName":"' . $out["userFirstName"] . '"}]';
+			$rs = '[{"userName":"' . $out["userFirstName"] . '"}]';
 			echo $rs;
 
 		}

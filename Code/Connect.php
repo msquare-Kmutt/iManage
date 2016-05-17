@@ -4,8 +4,8 @@
 
 	$host = "localhost";
 	$username = "root";
-	$password = "123456";
-	$databaseName = "eat2fat";
+	$password = "";
+	$databaseName = "im";
 
 	/*
 	$host = "mysql.hostinger.co.uk";
