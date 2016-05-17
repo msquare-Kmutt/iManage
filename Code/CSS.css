@@ -403,11 +403,18 @@ body {
     padding-right: 40px; 
     display: inline;
 }
-
+.nameslide {
+    animation-name: fadeMarginLeft-300-0;
+    animation-duration: 1.75s;
+    margin-left: 0px;
+    margin-top: 0px;
+    opacity: 1;
+}
 .menuslide {
     animation-name: fadeMarginLeft-300-0;
     animation-duration: 1.75s;
     margin-left: 0px;
+    margin-top: 0px;
     opacity: 1;
 }
 
@@ -423,7 +430,6 @@ body {
 }
 
 .menuAdmin {
-    background-color: #00ACC1;
     width: 300px; 
     padding-top: 5px; 
     padding-bottom: 5px;
@@ -437,7 +443,7 @@ body {
     color: #00ACC1;
 }
 
-.contentAdmin {
+.settingMenu {
     animation-name: opacity0-1;
     animation-duration: 3s;
     margin-left: 300px;

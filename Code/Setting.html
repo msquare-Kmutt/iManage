@@ -2,30 +2,22 @@
 <html>
 	<head>
 		<title>iManage</title>
+		<link rel="stylesheet" type="text/css" href="CSS.css">
 		<meta charset="utf-8">
 	</head>
-	<body >
-		
-		<div>
-			<table class="Logout" align="right">
-				<tr>
-					<td>
-						<div id="Username"></div>
-					</td>
-					<td>
-						<input class="buttonBrown" type="button" value="Logout" onclick="window.location.href='index.html'">
-					</td>
-				</tr>
-			</table>
-		</div>
-	</body>
 	<body style="background-color: #FAFAFA;">
+		<div class="menuslide" style="margin-bottom:-5px;">
+			<img src="Pic/Logo.jpg" onclick="window.location.href='Home.html'">
+		</div>
 		<div class="menuslide" style="width: 300px; height: 643px; text-align: center;background-color: #FF8E76; ">
+			<div class="menuAdmin" style=" background-color: #A2A2A2;">
+				<div id="Username"></div>
+			</div>
 			<div class="menuAdmin" onclick="window.location.href='Home.html'">
 				<label>User</label>
 			</div>
 			<div class="menuAdmin" onclick="window.location.href='Home.html'">
-				<label>Boking</label>
+				<label>Booking</label>
 			</div>
 			<div class="menuAdmin" onclick="window.location.href='Home.html'">
 				<label>Order</label>
@@ -42,6 +34,9 @@
 			<div class="menuAdmin" onclick="window.location.href='Home.html'">
 				<label>Help</label>
 			</div>
+			<div class="menuAdmin" onclick="window.location.href='Logout.php'">
+				<label>Logout</label>
+			</div>
 		</div>
 
 		<div class="settingMenu" >
@@ -49,26 +44,27 @@
 				<tr>
 					<td>
 						<div>
-							<img src="Pic/Table.jpg" style= margin-top: 5px;" onclick="window.location.href='settingMenu.html'">
+							<img src="Pic/Table.jpg" style="margin-top: 5px;" onclick="window.location.href='Setting.html'">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div>
-							<img src="Pic/Menu.jpg" style="margin-top: 5px;" onclick="window.location.href='menu.html'">
+							<img src="Pic/Menu.jpg" style="margin-top: 5px;" onclick="window.location.href='settingMenu.html'">
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<div>
-							<img src="Pic/Logo.jpg" style="width: 40%; height= 40%; margin-top: 5px;" onclick="window.location.href='settingMenu.html'">
+							<img src="Pic/Promotion.jpg" style="margin-top: 5px;" onclick="window.location.href='Setting.html'">
 						</div>
 					</td>
 				</tr>
 			</table>
 		</div>
+
 		<script type="text/javascript"> 
 			loadGCMLog();
 			
@@ -98,7 +94,7 @@
 			{
 				var arr = JSON.parse(response);
 				var i;
-				var out = "<p>"+arr[0].userName+"</p>";
+				var out = "<h>"+arr[0].userName+"</h>";
 				document.getElementById("Username").innerHTML = out;
 			}
 		</script>
