@@ -9,10 +9,21 @@
 	else
 	{
 		session_start();
-		$_SESSION['username'] = "";
-		$_SESSION['userPassword'] = "";
-		session_destroy();
-		header("Location: index.html");
+		$userID = mysqli_real_escape_string($con, $_SESSION['username']);
+		$userPassword = mysqli_real_escape_string($con, $_SESSION['userPassword']);
+		$sql = "SELECT  COUNT(*) AS count, userFirstName FROM userInformation WHERE userID = '" . $userID . "'";
+		$result = mysqli_query($con, $sql);
+		$out = $result->fetch_array(MYSQLI_ASSOC);
+		if($out['count'] == "1")
+		{
+			session_destroy();
+			header("Location: index.html");
+		}
+		else
+		{
+			header("Location: index.html");
+		}
+		
 	}
 	mysqli_close($con);
 ?>
