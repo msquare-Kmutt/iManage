@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>iManage</title>
+		<meta charset="utf-8">
+	</head>
+	<body >
+		
+		<div>
+			<table class="Logout" align="right">
+				<tr>
+					<td>
+						<div id="Username"></div>
+					</td>
+					<td>
+						<input class="buttonBrown" type="button" value="Logout" onclick="window.location.href='index.html'">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<body style="background-color: #FAFAFA;">
+		<div class="menuslide" style="width: 300px; height: 643px; text-align: center;background-color: #FF8E76; ">
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>User</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Boking</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Order</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Kitchen</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Billing</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Setting.html'">
+				<label>Setting</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Help</label>
+			</div>
+		</div>
+
+		<div class="settingMenu" >
+			<table class="Logout">
+				<tr>
+					<td>
+						<div>
+							<img src="Pic/Table.jpg" style= margin-top: 5px;" onclick="window.location.href='settingMenu.html'">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>
+							<img src="Pic/Menu.jpg" style="margin-top: 5px;" onclick="window.location.href='menu.html'">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>
+							<img src="Pic/Logo.jpg" style="width: 40%; height= 40%; margin-top: 5px;" onclick="window.location.href='settingMenu.html'">
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script type="text/javascript"> 
+			loadGCMLog();
+			
+			function loadGCMLog()
+			{
+				var xmlhttp = new XMLHttpRequest();
+				var url = "SectionName.php";
+				xmlhttp.onreadystatechange=function() 
+				{
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+					{
+						if(xmlhttp.responseText != "false")
+						{
+							displayResponse(xmlhttp.responseText);
+						}
+						else
+						{
+							window.location.href="Logout.php";
+						}
+					}
+				}
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
+			}
+
+			function displayResponse(response)
+			{
+				var arr = JSON.parse(response);
+				var i;
+				var out = "<p>"+arr[0].userName+"</p>";
+				document.getElementById("Username").innerHTML = out;
+			}
+		</script>
+	</body>
+</html>
