@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>iManage</title>
+		<link rel="stylesheet" type="text/css" href="CSS.css">
+		<meta charset="utf8">
+	</head>
+	<body style="background-color: #FAFAFA;">
+		<div class="menuslide" style="margin-bottom:-5px;">
+			<img src="Pic/Logo.jpg" onclick="window.location.href='Home.html'">
+		</div>
+		<div class="menuslide" style="width: 300px; height: 643px; text-align: center;background-color: #FF8E76; ">
+			<div class="menuAdmin" style=" background-color: #A2A2A2;">
+				<div id="Username"></div>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>User</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Booking</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Order</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Kitchen</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Billing</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Setting.html'">
+				<label>Setting</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+				<label>Help</label>
+			</div>
+			<div class="menuAdmin" onclick="window.location.href='Logout.php'">
+				<label>Logout</label>
+			</div>
+		</div>
+
+		<div class="settingMenu">
+			<form>
+				<table class="displayTable" style="width: 100%;">
+					<tr style="height: 50px;">
+						<td style="text-align: right; padding-right: 30px;">
+							Menu Name :
+						</td>
+						<td style="text-align: left;">
+							<input type="text" id="menuName" name="menuName" value="Menu Name"style="width: 500px; height: 30px; border-radius: 6px; border-style: solid; border-width: 0px; background: #ECEAEA; outline-width: 0.5; outline-color: #8FD4D0; padding-left: 10px; padding-right: 10px; font-family: 'Omyim'; font-size: 20pt; color: #8FD4D0;">
+						</td>
+					</tr>
+					<tr style="height: 50px;">
+						<td style="text-align: right; padding-right: 30px;">
+							Price :
+						</td>
+						<td style="text-align: left;">
+							<input type="number" min="0"id="methodDescription" name="methodDescription" value="0"style="width: 500px; height: 30px; border-radius: 6px; border-style: solid; border-width: 0px; background: #ECEAEA; outline-width: 0.5; outline-color: #8FD4D0; padding-left: 10px; padding-right: 10px; font-family: 'Omyim'; font-size: 20pt; color: #8FD4D0;">
+						</td>
+					</tr>
+					<tr style="height: 50px;">
+						<td style="text-align: right; padding-right: 30px;">
+							Description :
+						</td>
+						<td style="text-align: left;">
+							<input type="text" id ="description" name="description" value ="Description" style="width: 500px; height: 30px; border-radius: 6px; border-style: solid; border-width: 0px; background: #ECEAEA; outline-width: 0.5; outline-color: #8FD4D0; padding-left: 10px; padding-right: 10px; font-family: 'Omyim'; font-size: 20pt; color: #8FD4D0;">
+						</td>
+					</tr>
+					<tr style="height: 50px;">
+					<td style="text-align: right; padding-right: 30px;">
+						
+					</td>
+					<td style="text-align: left;">
+						<input class="buttonAdd" type="button" value="Add Menu" onclick="addMenu()" style="width: 200px; height: 40px; border-radius: 6px; border-style: solid; border-width: 0px; outline: none; font-family: 'Omyim'; font-size: 20pt; color: #FFFFFF;">
+					</td>
+				</tr>
+					
+				</table>
+				<br>
+				<div class="scrollForTable" style="height: 50px; width: 972px;">
+				<table class="displayTable" style="height: 50px; width: 972px;">
+					<tr>
+						<td class="displayCol" style="width: 150px; color: #FFFFFF; background-color: #8FD4D0;">
+							Menu NO.
+						</td>
+						<td class="displayCol" style="width: 200px; color: #FFFFFF; background-color: #8FD4D0;">
+							Menu Name
+						</td>
+						<td class="displayCol" style="width: 562px; color: #FFFFFF; background-color: #8FD4D0;">
+							Description
+						</td>
+						<td class="displayCol" style="width: 60px; color: #FFFFFF; background-color: #8FD4D0;">
+							Price
+						</td>
+						<td class="displayCol" style="width: 60px; color: #FFFFFF; background-color: #8FD4D0;">
+							Delete
+						</td>
+					</tr>
+				</table>
+				</div>
+			<div style="overflow-y: scroll; height: 335px;">
+				<div id="tableTemplate"></div>
+			</div>
+			</form>
+
+			<br>
+		</div>
+
+		<script>
+			loadMenuBar();	
+			function loadMenuBar()
+			{
+				var xmlhttp = new XMLHttpRequest();
+				var url = "SectionName.php";
+				xmlhttp.onreadystatechange=function() 
+				{
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+					{
+						if(xmlhttp.responseText != "false")
+						{
+							displayResponse(xmlhttp.responseText);
+						}
+						else
+						{
+							window.location.href="Logout.php";
+						}
+					}
+				}
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
+			}
+
+			function displayResponse(response)
+			{
+				var arr = JSON.parse(response);
+				var i;
+				var out = "<h>"+arr[0].userName+"</h>";
+				document.getElementById("Username").innerHTML = out;
+			}
+			function addIL()
+			{
+				var xmlhttp = new XMLHttpRequest();
+				var url = "AddFood.php";
+			    var fn = document.getElementById("foodName").value;
+			    var fd = document.getElementById("foodDescription").value;
+			    var li = document.getElementById("levelIngredient").value;
+			    var mt = document.getElementById("method").value;
+			    var fp = document.getElementById("foodPrice").value;
+			    var cr = document.getElementById("carbohydrate").value;
+			    var pt = document.getElementById("protein").value;
+			    var ft = document.getElementById("fat").value;
+			    var vt = document.getElementById("vitamin").value;
+			    var cd = document.getElementById("coolDown").value;
+			    var wfu = document.getElementById("weightForUnlock").value;
+			    var mq = document.getElementById("maxQuantity").value;
+
+			    var list = '&list=["';
+			    if(selectedCount == 0)
+			    {
+			    	list += "";
+			    }
+			    else
+			    {
+			    	for(var i=0 ; i<selectedCount ; i++)
+			    	{
+			    		if(i != 0)
+			    		{
+			    			list += ',"';
+			    		}
+			    		list += selectedIngredient[i].ID + '"';	
+			    	}
+			    }
+			    list += "]";
+
+			    url += "?foodName="+fn+"&foodDescription="+fd+"&levelIngredient="+li+"&method="+mt+"&foodPrice="+fp+"&carbohydrate="+cr+"&protein="+pt+"&fat="+ft+"&vitamin="+vt+"&coolDown="+cd+"&weightForUnlock="+wfu+"&maxQuantity="+mq+list;
+			
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+					{
+						if(xmlhttp.responseText == "true")
+						{
+							alert("Successed");
+						}
+						else
+						{
+							alert("Failed");
+						} 
+						loadFood();
+					}
+				}
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
+			}
+
+			
+
+			function loadMethod()
+			{
+				var xmlhttp = new XMLHttpRequest();
+				var url = "GetMethod.php";
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+					{
+						displayResponseMethod(xmlhttp.responseText);
+					}
+				}
+				xmlhttp.open("GET", url, true); xmlhttp.send();
+			}
+
+			function displayResponseMethod(response)
+			{
+				var arr = JSON.parse(response);
+				var i;
+				var out ="<select id=\"method\" name=\"method\" style=\"width: 270px; height: 32px; border-radius: 6px; border-style: solid; border-width: 0px; background: #FFFFFF; outline-width: 0.5; outline-color: #8FD4D0; padding-left: 10px; padding-right: 10px; font-family: 'Omyim'; font-size: 20pt; color: #8FD4D0;\">";
+				for(i = 0; i < arr.length; i++)
+				{
+					out += "<option value=\"" +
+					arr[i].methodName + 
+					"\">" +
+					arr[i].methodName +
+					"</option>";
+				}
+				out += "</select>"; 
+				document.getElementById("selectTemplateMethod").innerHTML = out;
+			}
+
+
+			function loadFood()
+			{
+				var xmlhttp = new XMLHttpRequest();
+				var url = "GetFood.php";
+				xmlhttp.onreadystatechange=function()
+				{
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+					{
+						displayResponseFood(xmlhttp.responseText);
+					}
+				}
+				xmlhttp.open("GET", url, true); xmlhttp.send();
+			}
+
+			function displayResponseFood(response)
+			{
+				var arr = JSON.parse(response);
+				var i;
+				var out = "<table class='displayTable'>";
+				for(i = 0; i < arr.length; i++) {
+					out += "<tr id=\"row"+(i+1)+"\" value=\"0\" class=\"selectRow\" style=\"font-size:"+
+					"16pt; height: 35px;\" onclick=\"checkSelect('row"+(i+1)+"')\">" +
+					"<td id=\"row"+(i+1)+"ID\" class=\"displayCol\" style=\"width: 120px;\">" + 
+					arr[i].foodID + 
+					"</td><td id=\"row"+(i+1)+"Name\" class=\"displayCol\" style=\"width: 260px;\">" + 
+					arr[i].foodName + 
+					"</td></tr>";
+				}
+				out += "</table>";
+				document.getElementById("selectTemplateFood").innerHTML = out;
+
+			}
+		</script>
+	</body>
+</html>
