@@ -21,7 +21,6 @@
 		}
 		else
 		{
-			header("Location: Index.html");
 			echo "false";
 		}
 	}
