@@ -99,6 +99,35 @@
 				var out = "<h>"+arr[0].userName+"</h>";
 				document.getElementById("Username").innerHTML = out;
 			}
+			
+			
+			function deleteMenu(menuID)
+			{
+				if(confirm("Do you want to delete it?"))
+				{
+					var xmlhttp = new XMLHttpRequest();
+					var url = "DeleteMenu.php?menuID="+menuID;
+				
+					xmlhttp.onreadystatechange=function()
+					{
+						if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+						{ 
+							if(xmlhttp.responseText == "true")
+							{
+								alert("Successed");
+							}
+							else
+							{
+								alert("Failed");
+							}
+							loadMenu();
+						}
+					}
+					xmlhttp.open("GET", url, true);
+					xmlhttp.send();
+				}
+			}
+			
 		</script>
 	</body>
 </html>
