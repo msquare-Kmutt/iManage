@@ -17,6 +17,8 @@
 		if($out['count'] == "1")
 		{
 			session_destroy();
+			session_start();
+			$_SESSION['log'] = 0;
 			header("Location: index.html");
 		}
 		else

@@ -167,7 +167,7 @@ body {
     margin-top: 30px;
     overflow-y: scroll; 
     width: 780px; 
-    height: 450px; 
+    height: 300px; 
     position: absolute; 
     background-color: none; 
     left: 32%;
@@ -424,7 +424,7 @@ body {
 }
 
 .menuAdmin {
-    width: 300px; 
+    width: 200px; 
     padding-top: 5px; 
     padding-bottom: 5px;
     font-size: 25pt; 
@@ -440,7 +440,7 @@ body {
 .settingMenu {
     animation-name: opacity0-1;
     animation-duration: 3s;
-    margin-left: 300px;
+    margin-left: 250px;
     opacity: 1;
     top: 0px;
     position: absolute;

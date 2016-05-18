@@ -21,6 +21,9 @@
 			if($out['password'] == $userPassword){
 				echo "PASS";
 				session_start();
+				session_destroy();
+				session_start();
+				$_SESSION['log'] = 1;
 				$_SESSION['username'] = $userID;
 				$_SESSION['userPassword'] = $userPassword;
 			}
