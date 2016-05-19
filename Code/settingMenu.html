@@ -13,28 +13,28 @@
 			<div class="menuAdmin" style=" background-color: #A2A2A2;">
 				<div id="Username"></div>
 			</div>
-			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+			<div class="menuAdmin" id="User" onclick="window.location.href='Home.html'">
 				<label>User</label>
 			</div>
-			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+			<div class="menuAdmin" id="Booking" onclick="window.location.href='Home.html'">
 				<label>Booking</label>
 			</div>
-			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+			<div class="menuAdmin" id="Order" onclick="window.location.href='Home.html'">
 				<label>Order</label>
 			</div>
-			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+			<div class="menuAdmin" id="Kitchen" onclick="window.location.href='Home.html'">
 				<label>Kitchen</label>
 			</div>
-			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+			<div class="menuAdmin" id="Billing" onclick="window.location.href='Home.html'">
 				<label>Billing</label>
 			</div>
-			<div class="menuAdmin" onclick="window.location.href='Setting.html'">
+			<div class="menuAdmin" id="Setting" onclick="window.location.href='Setting.html'">
 				<label>Setting</label>
 			</div>
-			<div class="menuAdmin" onclick="window.location.href='Home.html'">
+			<div class="menuAdmin" id="Help" onclick="window.location.href='Home.html'">
 				<label>Help</label>
 			</div>
-			<div class="menuAdmin" onclick="window.location.href='Logout.php'">
+			<div class="menuAdmin" id="Logout" onclick="window.location.href='Logout.php'">
 				<label>Logout</label>
 			</div>
 		</div>
@@ -157,11 +157,11 @@
 					{
 						if(xmlhttp.responseText == "true")
 						{
-							alert("Successed");
+							//alert("Successed");
 						}
 						else
 						{
-							alert("Failed");
+							//alert("Failed");
 						} 
 						loadMenu();
 					}
@@ -197,7 +197,7 @@
 					arr[i].menuID + 
 					"</td><td class='displayCol' style='width: 200px;'>" + 
 					arr[i].menuName + "</td><td class='displayCol' style='width: 562px;'>"  + arr[i].menuDetail + "</td><td class='displayCol' style='width: 60px;'>"+ arr[i].menuPrice + "</td><td class='displayCol' style='width: 60px;'>"+
-					"<img src='Pic/Delete.png' style='width: 20px; height= 20px; margin-top: 5px;' onclick=\"deleteMenu('" + arr[i].menuID + "')\">" +
+					"<img src='Pic/Delete.png' id =\""+i+"delete\" style='width: 20px; height= 20px; margin-top: 5px;' onclick=\"deleteMenu('" + arr[i].menuID + "')\">" +
 					"</td></tr>"
 				}
 				out += "</table>";
@@ -206,8 +206,7 @@
 			
 			function deleteMenu(menuID)
 			{
-				if(confirm("Do you want to delete it?"))
-				{
+				
 					var xmlhttp = new XMLHttpRequest();
 					var url = "DeleteMenu.php?menuID="+menuID;
 				
@@ -217,18 +216,18 @@
 						{ 
 							if(xmlhttp.responseText == "true")
 							{
-								alert("Successed");
+								//alert("Successed");
 							}
 							else
 							{
-								alert("Failed");
+								//alert("Failed");
 							}
 							loadMenu();
 						}
 					}
 					xmlhttp.open("GET", url, true);
 					xmlhttp.send();
-				}
+				
 			}
 		</script>
 	</body>
